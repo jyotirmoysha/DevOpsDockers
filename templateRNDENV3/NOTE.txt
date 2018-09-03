@@ -1,0 +1,30 @@
+1. Content:
+FROM java:8
+ARG app_version
+ARG my_name
+RUN echo “Building $app_version”
+RUN echo "Hello $my_name"
+
+
+To build this file use: docker build -t templaternd/templateenv:21.0 --build-arg app_version=2.0 --build-arg my_name=Jyotirmoy1 --no-cache .
+
+-----------------------------
+
+2. 
+
+FROM java:8
+
+ARG app_version
+ARG my_name
+
+ENV feature_enabled false
+
+RUN echo “Building $app_version”
+RUN echo "Hello $my_name"
+
+CMD sh -c 'if [ "$feature_enabled" = true ]; then echo "Feature activated"; else echo "Feature not activated"; fi'
+
+To build this file use: docker build -t testtempenv --build-arg app_version=2.0 --build-arg my_name=Jyotirmoy1 --no-cache .
+TO run the docker images: docker run -e feature_enabled=true testtempenv 
+TO run the docker images: docker run -e feature_enabled=false testtempenv 
+-------------------------------------------

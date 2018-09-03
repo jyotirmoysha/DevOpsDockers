@@ -1,0 +1,12 @@
+1. Content:
+FROM java:8
+ARG app_version
+ARG my_name
+RUN echo “Building $app_version”
+RUN echo "Hello $my_name"
+
+To build this file use: docker build -t templaternd/templatetest:1.0 --build-arg app_version=1.0 --build-arg my_name=Jyotirmoy --no-cache .
+
+-----------------------------
+
+2. 
